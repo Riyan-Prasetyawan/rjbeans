@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Why Choose RJ's</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .features-header {
+            padding: 120px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0ebe7 100%);
+        }
+
+        .features-header h1 {
+            font-size: 52px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .features-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Features Grid */
+        .features-main {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #c99b7d);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #c99b7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .feature-icon i {
+            font-size: 32px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: #4a3b32;
+            padding: 100px 40px;
+            color: white;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .values-header h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .values-header p {
+            font-size: 18px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: background 0.3s;
+        }
+
+        .value-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .value-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .value-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .process-header h2 {
+            font-size: 42px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .process-header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #c99b7d);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-step h4 {
+            font-size: 20px;
+            color: #4a3b32;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Commitment Section */
+        .commitment-section {
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0ebe7 100%);
+            padding: 100px 40px;
+        }
+
+        .commitment-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .commitment-content h2 {
+            font-size: 42px;
+            color: #4a3b32;
+            margin-bottom: 25px;
+        }
+
+        .commitment-content p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .commitment-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .commitment-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .commitment-list i {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        .commitment-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .commitment-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .commitment-image img:first-child {
+            transform: translateY(30px);
+        }
+
+        /* CTA Section */
+        .features-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8a6045 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .features-cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .features-cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .features-cta .btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 35px;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .commitment-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-header {
+                padding: 100px 20px 50px;
+            }
+
+            .features-header h1 {
+                font-size: 36px;
+            }
+
+            .features-main {
+                padding: 60px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-section {
+                padding: 60px 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-section {
+                padding: 60px 20px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .commitment-section {
+                padding: 60px 20px;
+            }
+
+            .commitment-image {
+                grid-template-columns: 1fr;
+            }
+
+            .commitment-image img:first-child {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-logo">RJ's</span>
+        </a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="features.html" class="active">Features</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-auth">
+            <a href="contact.html" class="btn btn-primary">Kontak Kami</a>
+        </div>
+    </nav>
+
+    <header class="features-header">
+        <h1>Why We Are Special</h1>
+        <p>Discover what makes RJ's the confectionery choice of New Zealand and beyond.</p>
+    </header>
+
+    <!-- Main Features Section -->
+    <section class="features-main">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Palm Oil Free</h3>
+                <p>We care about the environment. No palm oil is used in any of our products, helping protect vital
+                    rainforest ecosystems.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>New Zealand Made</h3>
+                <p>Proudly crafted in Levin, New Zealand, using local expertise, passion, and generations of
+                    confectionery knowledge.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Family Recipe</h3>
+                <p>Based on the original recipe by Roger and Regan Halliwell, passed down with care through our company.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Natural Ingredients</h3>
+                <p>We use real licorice root extract and natural flavorings—no artificial shortcuts, just quality
+                    ingredients.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Award Winning</h3>
+                <p>Multiple industry awards recognize our commitment to excellence and innovation in confectionery.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Loved Worldwide</h3>
+                <p>Exported to over 25 countries, RJ's has become a symbol of New Zealand quality around the globe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="values-header">
+                <h2>Our Numbers Speak</h2>
+                <p>Three decades of making the world a sweeter place</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-number">30+</div>
+                    <div class="value-label">Years of Excellence</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">25+</div>
+                    <div class="value-label">Countries Served</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">100%</div>
+                    <div class="value-label">Palm Oil Free</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">1M+</div>
+                    <div class="value-label">Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-header">
+            <h2>How We Make Magic</h2>
+            <p>Every piece of RJ's licorice goes through a meticulous crafting process</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Source</h4>
+                <p>We carefully select the finest natural ingredients from trusted suppliers around the world.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Mix</h4>
+                <p>Our secret recipe is prepared by skilled confectioners following traditional methods.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Craft</h4>
+                <p>Each batch is carefully shaped and processed to achieve the perfect texture and taste.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Quality Check</h4>
+                <p>Every product undergoes rigorous quality testing before reaching your hands.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="commitment-section">
+        <div class="commitment-container">
+            <div class="commitment-content">
+                <h2>Our Commitment to You</h2>
+                <p>At RJ's, we believe that great confectionery is about more than just taste. It's about the values we
+                    uphold and the promises we keep.</p>
+                <p>From the first batch in 1994 to today, our commitment to quality, sustainability, and customer
+                    satisfaction has never wavered.</p>
+                <ul class="commitment-list">
+                    <li><i class="fas fa-check-circle"></i> <span>100% satisfaction guarantee on all products</span>
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> <span>Sustainable and environmentally conscious
+                            practices</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Transparent ingredient sourcing and labeling</span>
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> <span>Supporting local communities and employment</span>
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> <span>Continuous innovation while respecting
+                            tradition</span></li>
+                </ul>
+            </div>
+            <div class="commitment-image">
+                <img src="assets/images/about-1.png" alt="Our team at work">
+                <img src="assets/images/about-2.png" alt="Quality ingredients">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="features-cta">
+        <h2>Ready to Experience the Magic?</h2>
+        <p>Discover why millions of customers worldwide choose RJ's for their confectionery needs.</p>
+        <a href="product.html" class="btn">Explore Products <i class="fas fa-arrow-right"
+                style="margin-left: 10px;"></i></a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column brand-col">
+                <div class="footer-brand-title">RJ's</div>
+                <p>Making the world a sweeter place with our famous licorice. Handcrafted in Levin, NZ since 1995. We
+                    are committed to sustainability and great taste.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Our Products</a></li>
+                    <li><a href="features.html">Why RJ's</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="blog.html">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>55 Main South Road,<br>Levin 5510, New
+                            Zealand</span></li>
+                    <li><i class="fas fa-phone"></i> <span>+62 895 6390 68080</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>hello@rjs.co.nz</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Mon - Fri: 9:00 - 17:00</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 RJ's Confectionery. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i>
+            in New Zealand.
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <a href="https://wa.me/62895639068080" target="_blank" class="float-btn whatsapp-btn"><i class="fab fa-whatsapp"
+                style="font-size: 24px;"></i></a>
+        <a href="#" class="float-btn scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

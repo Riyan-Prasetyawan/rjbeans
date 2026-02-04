@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - RJ's Confectionery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-header {
+            padding: 120px 40px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0ebe7 100%);
+        }
+
+        .product-header h1 {
+            font-size: 52px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .product-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            padding: 60px 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-badge.new {
+            background: #e74c3c;
+        }
+
+        .product-badge.bestseller {
+            background: #27ae60;
+        }
+
+        .product-image {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            padding: 30px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 25px 30px 30px;
+        }
+
+        .product-category {
+            font-size: 13px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #4a3b32;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .product-price span {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        .product-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-btn:hover {
+            background: #8a6045;
+            transform: translateY(-2px);
+        }
+
+        .product-features {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .product-feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .product-feature i {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .product-header {
+                padding: 100px 20px 40px;
+            }
+
+            .product-header h1 {
+                font-size: 36px;
+            }
+
+            .product-grid {
+                padding: 40px 20px 60px;
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-logo">RJ's</span>
+        </a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html" class="active">Product</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-auth">
+            <a href="contact.html" class="btn btn-primary">Kontak Kami</a>
+        </div>
+    </nav>
+
+    <header class="product-header">
+        <h1>Our Products</h1>
+        <p>Explore our full range of premium confectionery delights, handcrafted with passion in New Zealand.</p>
+    </header>
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <span class="product-badge bestseller">Bestseller</span>
+            <div class="product-image">
+                <img src="assets/images/product-1.png" alt="Mixed Bullets">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Classic Collection</div>
+                <h3 class="product-name">Mixed Bullets</h3>
+                <p class="product-desc">Our signature blend of chocolate-covered licorice bullets. Perfect for sharing
+                    or savoring alone.</p>
+                <div class="product-footer">
+                    <div class="product-price">$45.00</div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-shopping-bag"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-leaf"></i> Palm Oil Free</span>
+                    <span class="product-feature"><i class="fas fa-check"></i> NZ Made</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <span class="product-badge new">New</span>
+            <div class="product-image">
+                <img src="assets/images/product-2.png" alt="Raspberry Twists">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Fruity Collection</div>
+                <h3 class="product-name">Raspberry Twists</h3>
+                <p class="product-desc">Vibrant raspberry-flavored licorice twists. A fruity twist on a classic
+                    favorite.</p>
+                <div class="product-footer">
+                    <div class="product-price">$35.00</div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-shopping-bag"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-leaf"></i> Palm Oil Free</span>
+                    <span class="product-feature"><i class="fas fa-star"></i> Fan Favorite</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="assets/images/product-3.png" alt="Chocolate Balls">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Premium Collection</div>
+                <h3 class="product-name">Chocolate Balls</h3>
+                <p class="product-desc">Luxurious chocolate-covered licorice spheres. Rich, indulgent, and irresistible.
+                </p>
+                <div class="product-footer">
+                    <div class="product-price">$55.00</div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-shopping-bag"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-certificate"></i> Premium</span>
+                    <span class="product-feature"><i class="fas fa-check"></i> NZ Made</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <span class="product-badge">Classic</span>
+            <div class="product-image">
+                <img src="assets/images/product-4.png" alt="Classic Black Licorice">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Traditional Collection</div>
+                <h3 class="product-name">Classic Black Licorice</h3>
+                <p class="product-desc">Traditional black licorice made with authentic licorice root extract. A timeless
+                    favorite.</p>
+                <div class="product-footer">
+                    <div class="product-price">$32.00</div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-shopping-bag"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-leaf"></i> Natural</span>
+                    <span class="product-feature"><i class="fas fa-heart"></i> Original Recipe</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="assets/images/product-5.png" alt="Soft Eating Licorice">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Artisan Collection</div>
+                <h3 class="product-name">Soft Eating Licorice</h3>
+                <p class="product-desc">Extra soft, handmade licorice in small batches. Melt-in-your-mouth texture
+                    guaranteed.</p>
+                <div class="product-footer">
+                    <div class="product-price">$38.00</div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-shopping-bag"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-hand-sparkles"></i> Handmade</span>
+                    <span class="product-feature"><i class="fas fa-check"></i> Small Batch</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <span class="product-badge bestseller">Gift Set</span>
+            <div class="product-image">
+                <img src="assets/images/product-6.png" alt="Premium Gift Box">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Gift Collection</div>
+                <h3 class="product-name">Premium Gift Box</h3>
+                <p class="product-desc">Beautifully presented assortment of our finest licorice varieties. Perfect for
+                    gifting.</p>
+                <div class="product-footer">
+                    <div class="product-price">$85.00 <span>$95.00</span></div>
+                    <a href="contact.html" class="product-btn"><i class="fas fa-gift"></i> Order Now</a>
+                </div>
+                <div class="product-features">
+                    <span class="product-feature"><i class="fas fa-gift"></i> Gift Ready</span>
+                    <span class="product-feature"><i class="fas fa-box"></i> Premium Pack</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <section
+        style="background: linear-gradient(135deg, var(--primary-color) 0%, #8a6045 100%); padding: 80px 40px; text-align: center; color: white;">
+        <h2 style="font-size: 36px; margin-bottom: 15px;">Can't Decide?</h2>
+        <p style="font-size: 18px; max-width: 500px; margin: 0 auto 30px; opacity: 0.9;">Contact us for personalized
+            recommendations or custom orders tailored to your preferences.</p>
+        <a href="contact.html" class="btn"
+            style="background: white; color: var(--primary-color); padding: 15px 35px; font-size: 16px;">Contact Us <i
+                class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column brand-col">
+                <div class="footer-brand-title">RJ's</div>
+                <p>Making the world a sweeter place with our famous licorice. Handcrafted in Levin, NZ since 1995. We
+                    are committed to sustainability and great taste.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Our Products</a></li>
+                    <li><a href="features.html">Why RJ's</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="blog.html">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>55 Main South Road,<br>Levin 5510, New
+                            Zealand</span></li>
+                    <li><i class="fas fa-phone"></i> <span>+62 895 6390 68080</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>hello@rjs.co.nz</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Mon - Fri: 9:00 - 17:00</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 RJ's Confectionery. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i>
+            in New Zealand.
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <a href="https://wa.me/62895639068080" target="_blank" class="float-btn whatsapp-btn"><i class="fab fa-whatsapp"
+                style="font-size: 24px;"></i></a>
+        <a href="#" class="float-btn scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

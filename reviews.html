@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - RJ's Confectionery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .reviews-header {
+            padding: 120px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0ebe7 100%);
+        }
+
+        .reviews-header h1 {
+            font-size: 52px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .reviews-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Rating Summary */
+        .rating-summary {
+            background: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .rating-summary-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .rating-big {
+            text-align: center;
+        }
+
+        .rating-number {
+            font-size: 80px;
+            font-weight: 700;
+            color: #4a3b32;
+            line-height: 1;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .rating-count {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .rating-breakdown {
+            text-align: left;
+        }
+
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .rating-bar-label {
+            width: 50px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .rating-bar-track {
+            width: 200px;
+            height: 8px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rating-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #c99b7d);
+            border-radius: 10px;
+        }
+
+        .rating-bar-count {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Reviews Grid */
+        .reviews-container {
+            padding: 60px 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #c99b7d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .reviewer-info h4 {
+            font-size: 18px;
+            color: #4a3b32;
+            margin-bottom: 5px;
+        }
+
+        .reviewer-info .review-date {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .review-product {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: var(--primary-color);
+        }
+
+        .review-product i {
+            margin-right: 5px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #e8f5e9;
+            color: #27ae60;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Featured Review */
+        .featured-review {
+            background: linear-gradient(135deg, #4a3b32 0%, #6b5344 100%);
+            padding: 80px 40px;
+            margin: 0;
+        }
+
+        .featured-review-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        .featured-review-inner .quote-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .featured-review-inner blockquote {
+            font-size: 28px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+            background: none;
+            border: none;
+            padding: 0;
+            color: white;
+        }
+
+        .featured-review-inner .reviewer {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .featured-review-inner .stars {
+            color: #FFD700;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .review-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8a6045 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .review-cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .review-cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .review-cta .btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 35px;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .reviews-header {
+                padding: 100px 20px 50px;
+            }
+
+            .reviews-header h1 {
+                font-size: 36px;
+            }
+
+            .rating-summary-inner {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .rating-bar-track {
+                width: 150px;
+            }
+
+            .reviews-container {
+                padding: 40px 20px 60px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-review-inner blockquote {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-logo">RJ's</span>
+        </a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="reviews.html" class="active">Reviews</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-auth">
+            <a href="contact.html" class="btn btn-primary">Kontak Kami</a>
+        </div>
+    </nav>
+
+    <header class="reviews-header">
+        <h1>What People Say</h1>
+        <p>Real reviews from real customers who love RJ's</p>
+    </header>
+
+    <!-- Rating Summary -->
+    <section class="rating-summary">
+        <div class="rating-summary-inner">
+            <div class="rating-big">
+                <div class="rating-number">4.9</div>
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="rating-count">Based on 2,847 reviews</div>
+            </div>
+            <div class="rating-breakdown">
+                <div class="rating-bar">
+                    <span class="rating-bar-label">5 stars</span>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 85%;"></div>
+                    </div>
+                    <span class="rating-bar-count">2,420</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-bar-label">4 stars</span>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 10%;"></div>
+                    </div>
+                    <span class="rating-bar-count">285</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-bar-label">3 stars</span>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 3%;"></div>
+                    </div>
+                    <span class="rating-bar-count">85</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-bar-label">2 stars</span>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 1%;"></div>
+                    </div>
+                    <span class="rating-bar-count">35</span>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-bar-label">1 star</span>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 0.5%;"></div>
+                    </div>
+                    <span class="rating-bar-count">22</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Review -->
+    <section class="featured-review">
+        <div class="featured-review-inner">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <blockquote>"RJ's licorice has been part of our family for three generations. My grandmother introduced me
+                to it, and now I share it with my grandchildren. The quality has never wavered—it's simply the best
+                licorice in the world."</blockquote>
+            <div class="reviewer">— Margaret W., Auckland, NZ</div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews-container">
+        <div class="reviews-grid">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">SJ</div>
+                    <div class="reviewer-info">
+                        <h4>Sarah Johnson</h4>
+                        <span class="review-date">January 28, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"The best licorice I have ever tasted! The texture is just perfect—not too hard,
+                    not too soft. I've tried many brands, but nothing compares to RJ's quality."</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Mixed Bullets</div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">MT</div>
+                    <div class="reviewer-info">
+                        <h4>Michael Thompson</h4>
+                        <span class="review-date">January 25, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Mixed bullets are my absolute favorite. I love the chocolate coating! These are
+                    addictive in the best possible way. My whole office is hooked now."</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Chocolate Balls</div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">EW</div>
+                    <div class="reviewer-info">
+                        <h4>Emma Williams</h4>
+                        <span class="review-date">January 22, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"I bought the gift box for my mum's birthday and she absolutely loved it. The
+                    presentation was beautiful and the quality is outstanding. Will definitely order again!"</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Premium Gift Box</div>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">DL</div>
+                    <div class="reviewer-info">
+                        <h4>David Lee</h4>
+                        <span class="review-date">January 20, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="review-text">"As a licorice purist, I appreciate that RJ's uses real licorice root extract.
+                    The classic black licorice takes me back to my childhood. Authentic taste that can't be beat."</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Classic Black Licorice</div>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">JC</div>
+                    <div class="reviewer-info">
+                        <h4>Jennifer Chen</h4>
+                        <span class="review-date">January 18, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"My kids absolutely love the raspberry twists! I love that they're palm oil
+                    free—it's great to find treats I can feel good about giving my family."</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Raspberry Twists</div>
+            </div>
+
+            <!-- Review 6 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">RB</div>
+                    <div class="reviewer-info">
+                        <h4>Robert Brown</h4>
+                        <span class="review-date">January 15, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Ordered for my wife who's been craving proper NZ licorice since we moved to
+                    Australia. She was over the moon! Fast shipping too."</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Mixed Bullets</div>
+            </div>
+
+            <!-- Review 7 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">AP</div>
+                    <div class="reviewer-info">
+                        <h4>Amanda Parker</h4>
+                        <span class="review-date">January 12, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"The soft eating licorice is incredibly moreish. The texture is unlike anything
+                    else I've tried—perfectly soft and chewy. A true artisan product!"</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Soft Eating Licorice</div>
+            </div>
+
+            <!-- Review 8 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">TK</div>
+                    <div class="reviewer-info">
+                        <h4>Thomas King</h4>
+                        <span class="review-date">January 10, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Used the corporate gifting service for our clients. The feedback was
+                    amazing—everyone loved the quality and the beautiful presentation. Highly recommend!"</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Corporate Gift Sets</div>
+            </div>
+
+            <!-- Review 9 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">LM</div>
+                    <div class="reviewer-info">
+                        <h4>Lisa Martinez</h4>
+                        <span class="review-date">January 8, 2026</span>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Finally a licorice brand that cares about sustainability! The palm oil free
+                    commitment really matters to me. And it tastes absolutely amazing too!"</p>
+                <div class="review-product"><i class="fas fa-shopping-bag"></i> Purchased: Raspberry Twists</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="review-cta">
+        <h2>Ready to Try RJ's?</h2>
+        <p>Join thousands of happy customers and experience New Zealand's finest confectionery.</p>
+        <a href="product.html" class="btn">Shop Now <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column brand-col">
+                <div class="footer-brand-title">RJ's</div>
+                <p>Making the world a sweeter place with our famous licorice. Handcrafted in Levin, NZ since 1995. We
+                    are committed to sustainability and great taste.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Our Products</a></li>
+                    <li><a href="features.html">Why RJ's</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="blog.html">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>55 Main South Road,<br>Levin 5510, New
+                            Zealand</span></li>
+                    <li><i class="fas fa-phone"></i> <span>+62 895 6390 68080</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>hello@rjs.co.nz</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Mon - Fri: 9:00 - 17:00</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 RJ's Confectionery. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i>
+            in New Zealand.
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <a href="https://wa.me/62895639068080" target="_blank" class="float-btn whatsapp-btn"><i class="fab fa-whatsapp"
+                style="font-size: 24px;"></i></a>
+        <a href="#" class="float-btn scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

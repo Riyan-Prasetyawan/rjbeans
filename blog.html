@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ's Blog - Latest Stories</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-container {
+            padding: 60px 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+
+        .blog-content {
+            padding: 25px 30px 30px;
+        }
+
+        .blog-date {
+            font-size: 13px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #4a3b32;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+        }
+
+        .page-header {
+            padding: 120px 40px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0ebe7 100%);
+        }
+
+        .page-header h1 {
+            font-size: 52px;
+            color: #4a3b32;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 100px 20px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .blog-container {
+                padding: 40px 20px 60px;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-logo">RJ's</span>
+        </a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-auth">
+            <a href="contact.html" class="btn btn-primary">Kontak Kami</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Latest Stories</h1>
+        <p>Updates from the world of confectionery magic. Discover tips, recipes, and behind-the-scenes stories.</p>
+    </header>
+
+    <div class="blog-container">
+        <!-- Article 1 -->
+        <article class="blog-card">
+            <img src="assets/images/about-1.png" alt="The Secret Behind Our Licorice" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 1, 2026</div>
+                <h3 class="blog-title">The Secret Behind Our Licorice</h3>
+                <p class="blog-excerpt">Discover how we source the finest ingredients to create the softest, chewiest
+                    licorice in New Zealand.</p>
+                <a href="article-1.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card">
+            <img src="assets/images/about-2.png" alt="Palm Oil Free: Why It Matters" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 1, 2026</div>
+                <h3 class="blog-title">Palm Oil Free: Why It Matters</h3>
+                <p class="blog-excerpt">We are committed to sustainability. Learn why going palm oil free is a crucial
+                    step for our planet.</p>
+                <a href="article-2.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card">
+            <img src="assets/images/hero-bag.png" style="object-fit: contain; padding: 20px; background: #f5f5f5;"
+                alt="New Flavors Coming Soon" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 1, 2026</div>
+                <h3 class="blog-title">New Flavors Coming Soon</h3>
+                <p class="blog-excerpt">Get a sneak peek at the exciting new chocolate-covered treats we have in
+                    development this season.</p>
+                <a href="article-3.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-4.png" alt="The Art of Licorice Varieties" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 2, 2026</div>
+                <h3 class="blog-title">The Art of Licorice Varieties</h3>
+                <p class="blog-excerpt">Explore our diverse range of licorice flavors—from classic black to fruity
+                    raspberry twists.</p>
+                <a href="article-4.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-5.png" alt="Chocolate Meets Licorice" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 2, 2026</div>
+                <h3 class="blog-title">Chocolate Meets Licorice: A Perfect Pairing</h3>
+                <p class="blog-excerpt">Discover why chocolate and licorice create such a magical flavor combination
+                    that keeps fans coming back.</p>
+                <a href="article-5.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-6.png" alt="From Levin to the World" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 2, 2026</div>
+                <h3 class="blog-title">From Levin to the World: Our NZ Story</h3>
+                <p class="blog-excerpt">The inspiring journey of how a small-town dream became an internationally loved
+                    confectionery brand.</p>
+                <a href="article-6.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 7 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-7.png" alt="Natural Ingredients" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 3, 2026</div>
+                <h3 class="blog-title">Natural Ingredients: Our Promise</h3>
+                <p class="blog-excerpt">Learn about our commitment to using natural, quality ingredients in every
+                    product we make.</p>
+                <a href="article-7.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 8 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-8.png" alt="Perfect Gift Ideas" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 3, 2026</div>
+                <h3 class="blog-title">Perfect Gift Ideas: Licorice for Every Occasion</h3>
+                <p class="blog-excerpt">Looking for unique gift ideas? Discover how RJ's licorice makes the perfect
+                    present for any celebration.</p>
+                <a href="article-8.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <!-- Article 9 -->
+        <article class="blog-card">
+            <img src="assets/images/blog-9.png" alt="Creating Sweet Memories" class="blog-img">
+            <div class="blog-content">
+                <div class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 4, 2026</div>
+                <h3 class="blog-title">Creating Sweet Memories: Family Moments</h3>
+                <p class="blog-excerpt">How sharing RJ's has become a beloved tradition for families across generations.
+                </p>
+                <a href="article-9.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column brand-col">
+                <div class="footer-brand-title">RJ's</div>
+                <p>Making the world a sweeter place with our famous licorice. Handcrafted in Levin, NZ since 1995. We
+                    are committed to sustainability and great taste.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Our Products</a></li>
+                    <li><a href="features.html">Why RJ's</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="blog.html">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>55 Main South Road,<br>Levin 5510, New
+                            Zealand</span></li>
+                    <li><i class="fas fa-phone"></i> <span>+62 895 6390 68080</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>hello@rjs.co.nz</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Mon - Fri: 9:00 - 17:00</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 RJ's Confectionery. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i>
+            in New Zealand.
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-container">
+        <a href="https://wa.me/62895639068080" target="_blank" class="float-btn whatsapp-btn">
+            <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+        </a>
+        <a href="#" class="float-btn scroll-top-btn" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
